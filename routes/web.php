@@ -27,3 +27,5 @@ Route::get('/posts', [App\Http\Controllers\PostController::class, 'index'])->nam
 Route::get('/posts/{post}/edit', [App\Http\Controllers\PostController::class, 'edit'])->name('posts.edit');
 Route::put('/posts/{post}',[App\Http\Controllers\PostController::class, 'update'])->name('posts.update');
 Route::delete('/posts/{post}',[App\Http\Controllers\PostController::class, 'destroy'])->name('posts.destroy');
+Route::get('/reports',[App\Http\Controllers\ReportController::class, 'weekly_averages'])->name('weekly_averages');
+

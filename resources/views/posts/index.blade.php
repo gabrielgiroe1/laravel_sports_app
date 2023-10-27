@@ -1,61 +1,62 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="bg-white p-6 rounded-lg shadow-md">
-    <div class="text-center">Filter by date:</div>
-    <form action="{{ route('posts.index') }}" method="GET">
+  <div class="text-center bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-xl font-semibold">Sports app</h2>
+    <div><a href="{{ route('weekly_averages') }}" class="bg-blue-500 text-blue font-semibold py-2 px-4 rounded-md">Average
+        speed</a>
+    </div>
+    <h3 class="text-3xl font-semibold">Filter by date:</h1>
+      <form action="{{ route('posts.index') }}" method="GET">
         @csrf
         <div class="mt-4">
-            <label for="date" class="block font-semibold">Start Date:</label>
-            <input type="date" name="start_date" id="start_date" class="w-full p-2 border rounded-md" value="" required />
+          <label for="date" class="block font-semibold">Start Date:</label>
+          <input type="date" name="start_date" id="start_date" class="w-full p-2 border rounded-md" value=""
+            required />
         </div>
 
         <div class="mt-4">
-            <label for="date" class="block font-semibold">End Date:</label>
-            <input type="date" name="end_date" id="end_date" class="w-full p-2 border rounded-md" value="" required />
+          <label for="date" class="block font-semibold">End Date:</label>
+          <input type="date" name="end_date" id="end_date" class="w-full p-2 border rounded-md" value=""
+            required />
         </div>
         <div class="mt-4">
-            <button type="submit" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md">Filter</button>
-            <a href="{{ route('posts.index') }}" class="bg-red-500 text-white font-semibold py-2 px-4 rounded-md">Clear Filter</a>
+          <button type="submit" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md">Filter</button>
+          <a href="{{ route('posts.index') }}" class="bg-red-500 text-blue font-semibold py-2 px-4 rounded-md">Clear
+            Filter</a>
         </div>
-    </form>
-    <h2 class="text-xl font-semibold">List of Posts</h2>
-    <table class="w-full mt-4">
-      <thead>
-        <tr>
-          <th class="py-2 px-4">Date</th>
-          <th class="py-2 px-4">Distance (km)</th>
-          <th class="py-2 px-4">Time (minutes)</th>
-          <th class="py-2 px-4">Edit</th>
-          <th class="py-2 px-4">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
+      </form>
+      <h2 class="text-xl pt-4 mt-4 font-semibold">List of Posts</h2>
+      <hr>
+      <div class="w-1/2 mt-4">
+
         @foreach ($posts as $post)
-          <tr>
-            <td class="py-2 px-4">{{ $post->date }}</td>
-            <td class="py-2 px-4">{{ $post->distance }}</td>
-            <td class="py-2 px-4">{{ $post->time_minutes }}</td>
-            <td><a href="{{ route('posts.edit', $post) }}"
-                class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md">Edit</a>
-            </td>
-            <td class="py-2 px-4">
+          <div>
+            <p class="py-2 px-4">Date: {{ $post->date }}</p>
+            <p class="py-2 px-4">Time: {{ $post->time_minutes }} min</p>
+            <p class="py-2 px-4">Distance: {{ $post->distance }} km</p>
+            <p class="py-2 px-4">Speed: {{ round($post->distance / ($post->time_minutes / 60), 2) }} km/h</p>
+            <p class="py-2 px-4">Posted: {{ $post->created_at->diffForHumans() }}</p>
+            <p><a href="{{ route('posts.edit', $post) }}"
+                class="bg-blue-500 text-blue font-semibold py-2 px-4 rounded-md">Edit</a>
+            </p>
+            <div class="py-2 px-4">
               <form action="{{ route('posts.destroy', $post) }}" method="POST"
                 onsubmit="return confirm('Are you sure?')">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="bg-red-500 text-white font-semibold py-2 px-4 rounded-md">Detete</button>
               </form>
-            </td>
+            </div>
 
-          </tr>
+          </div>
+          <hr>
         @endforeach
-      </tbody>
+        </tbody>
 
-    </table>
-    <hr>
-    <div><a href="{{ route('posts.new') }}"
-        class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md">New post</a>
-    </div>
+      </div>
+      <div><a href="{{ route('posts.new') }}" class="bg-blue-500 text-blue font-semibold py-2 px-4 rounded-md">New
+          post</a>
+      </div>
   </div>
 @endsection
