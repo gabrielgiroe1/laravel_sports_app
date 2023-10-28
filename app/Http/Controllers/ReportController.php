@@ -11,7 +11,7 @@ class ReportController extends Controller
     public function weekly_averages()
     {//need to update this tomorrow;
         $values = DB::table('posts')
-            ->selectRaw("DATE_FORMAT(date, '%Y-%m-%d') AS week")
+            ->selectRaw("DATE_FORMAT(date, '%Y-%U') AS week")
             ->selectRaw('SUM(distance) AS total_distance')
             ->selectRaw('SUM(time_minutes) AS total_time')
             ->selectRaw('COUNT(*) AS entry_count')
