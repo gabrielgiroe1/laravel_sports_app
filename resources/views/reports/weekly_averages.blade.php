@@ -23,7 +23,7 @@
       </tbody>
     </table>
   </div>
-  <div><a href="{{ route('posts.index') }}" class="bg-blue-500 text-blue font-semibold py-2 px-4 rounded-md">Back to
+  <div class="mt-3"><a href="{{ route('posts.index') }}" class="bg-blue-500 text-blue font-semibold py-2 px-4 rounded-md">Back to
       posts</a>
   </div>
 @endsection
