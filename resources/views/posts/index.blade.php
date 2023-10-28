@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class=" d-flex ">
-    <div class="container w-1/6 flex flex-row justify-center item-center">
-      <div class="card text-center pt-5 w-64">
-        <div class="card-body">
-          <div class="mb-3 mt-4">
+  <div class="d-flex ">
+    <div class="container w-3/2 mx-auto flex flex-row justify-center item-center">
+      <div class="card text-center pt-5 w-96">
+        <div class="card-body text-center">
+          {{-- <div class="mb-3 mt-4"> --}}
             <h2 class="text-xl font-semibold">Sports app</h2>
             <div><a href="{{ route('weekly_averages') }}"
                 class="bg-blue-500 text-blue font-semibold py-2 px-4 rounded-md">Average
@@ -33,7 +33,7 @@
               </form>
               <h2 class="text-xl pt-4 mt-4 font-semibold">List of Posts</h2>
               <hr>
-              <div class="w-1/2 mt-4">
+              <div class=" mt-4">
                 @foreach ($posts as $post)
                   <div>
                     <p class="py-2 px-4">Date: {{ $post->date }}</p>
@@ -59,7 +59,7 @@
                 </tbody>
               </div>
               <div><a href="{{ route('posts.new') }}"
-                  class="bg-blue-500 text-blue font-semibold py-2 px-4 rounded-md">New
+                  class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md">New
                   post</a>
               </div>
           </div>
