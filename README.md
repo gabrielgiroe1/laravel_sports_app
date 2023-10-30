@@ -8,7 +8,9 @@
 </p>
 
 ## Installation
-1. Clone the repository:
+Follow these steps to set up and run the Laravel Sports App:
+1. **Clone the repository**:
+```bash```
 <p> git clone git@github.com:gabrielgiroe1/laravel_sports_app.git</p>
 
 2. Install PHP dependencies:
