@@ -7,11 +7,16 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Build with
+- [Laravel](https://laravel.org/)
+- [Tailwindcss](https://tailwindcss.com)
+
 ## Installation
 
 Follow these steps to set up and run the Laravel Sports App:
 
 1. **Clone the repository**:
+
    `git clone git@github.com:gabrielgiroe1/laravel_sports_app.git`
 
 2. Install PHP dependencies:
