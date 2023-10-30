@@ -8,26 +8,30 @@
 </p>
 
 ## Installation
+
 Follow these steps to set up and run the Laravel Sports App:
+
 1. **Clone the repository**:
-```bash```
-<p> git clone git@github.com:gabrielgiroe1/laravel_sports_app.git</p>
+   `git clone git@github.com:gabrielgiroe1/laravel_sports_app.git`
 
 2. Install PHP dependencies:
-composer install
+   `composer install`
 3. Install javascript dependencies:
-npm install
+   `npm install`
+
 4. Update .env file with your database and application configuration
+
 5. Generate application key:
-php artisan key:generate
+   `php artisan key:generate`
+
 6. Run migrations to create tables in your database:
-php artisan migrate
+   `php artisan migrate`
+
 7. Compile frontend assets:
-npm run dev
+   `npm run dev`
 
 8. Start the and development server:
-
-php artisan serve --port=8888
+   `php artisan serve --port=8888`
 
 ## License
 
