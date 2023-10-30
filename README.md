@@ -9,7 +9,7 @@
 
 ## Installation
 1. Clone the repository:
-git clone git@github.com:gabrielgiroe1/laravel_sports_app.git
+<p> git clone git@github.com:gabrielgiroe1/laravel_sports_app.git</p>
 
 2. Install PHP dependencies:
 composer install
