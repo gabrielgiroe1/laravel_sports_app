@@ -35,7 +35,7 @@ Follow these steps to set up and run the Laravel Sports App:
 7. Compile frontend assets:
    `npm run dev`
 
-8. Start the and development server:
+8. Start the development server:
    `php artisan serve --port=8888`
 
 ## License
