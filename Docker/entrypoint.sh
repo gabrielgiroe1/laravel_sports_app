@@ -11,6 +11,11 @@ else
     echo ".env file exists"
 fi
 
+until php artisan migrate; do
+    echo "Database is not available - waiting for it..."
+    sleep 5
+done
+
 php artisan migrate
 php artisan key:generate
 php artisan cache:clear
