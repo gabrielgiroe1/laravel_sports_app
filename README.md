@@ -49,8 +49,7 @@ Before you start, ensure that you have the following tools installed on your mac
 1. **Clone the repository**:
 ```bash
    `git clone git@github.com:gabrielgiroe1/laravel_sports_app.git`
-    cd your-laravel-project
-
+    cd laravel_sports_app
 ```
 
 2. Create a copy of the .env.example file and rename it to .env:
