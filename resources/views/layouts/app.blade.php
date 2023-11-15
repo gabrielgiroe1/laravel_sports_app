@@ -10,6 +10,10 @@
 
   <title>{{ config('app.name', 'Sports app') }}</title>
 
+  <!-- Include Alpine.js from CDN -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
+
   <!-- Fonts -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 
