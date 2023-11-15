@@ -12,6 +12,20 @@ class PostController extends Controller
         $this->middleware('auth');
     }
 
+    public function index(Request $request)
+    {
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        $query = Post::where('user_id', auth()->user()->id)->orderBy('date', 'desc');
+
+        if ($start_date && $end_date) {
+            $query->whereBetween('date', [$start_date, $end_date]);
+        }
+        $posts = $query->get();
+        return view('posts.index', compact('posts'));
+    }
+
     public function new()
     {
         return view('posts.new');
@@ -33,19 +47,7 @@ class PostController extends Controller
         $post->save();
         return redirect()->route('posts.index')->with('success', 'Post created successfully');
     }
-    public function index(Request $request)
-    {
-        $start_date = $request->input('start_date');
-        $end_date = $request->input('end_date');
 
-        $query = Post::where('user_id', auth()->user()->id)->orderBy('date', 'desc');
-
-        if ($start_date && $end_date) {
-            $query->whereBetween('date', [$start_date, $end_date]);
-        }
-        $posts = $query->get();
-        return view('posts.index', compact('posts'));
-    }
 
     public function edit(Post $post)
     {
