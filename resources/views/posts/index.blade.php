@@ -6,8 +6,7 @@
       <div class="card text-center pt-5 w-96">
         <div class="card-body text-center">
           <h2 class="text-3xl font-semibold mb-4">Sports app</h2>
-          <div><a href="{{ route('weekly_averages') }}" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md"
-              style="text-decoration: none;">Average
+          <div><a href="{{ route('weekly_averages') }}" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md no-underline">Average
               speed</a>
           </div>
           <h3 class="text-3xl font-semibold mt-4">Filter by date:</h1>
@@ -25,8 +24,7 @@
               </div>
               <div class="mt-4">
                 <button type="submit" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md">Filter</button>
-                <a href="{{ route('posts.index') }}" class="bg-red-500 text-white font-semibold py-2 px-4 rounded-md"
-                  style="text-decoration: none;">Clear
+                <a href="{{ route('posts.index') }}" class="bg-red-500 text-white font-semibold py-2 px-4 rounded-md no-underline">Clear
                   Filter</a>
               </div>
             </form>
@@ -41,8 +39,7 @@
                   <p class="py-2 px-4">Speed: {{ round($post->distance / ($post->time_minutes / 60), 2) }} km/h</p>
                   <p class="py-2 px-4">Posted: {{ $post->created_at->diffForHumans() }}</p>
                   <p><a href="{{ route('posts.edit', $post) }}"
-                      class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md"
-                      style="text-decoration: none;">Edit</a>
+                      class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md no-underline">Edit</a>
                   </p>
                   <div class="py-2 px-4">
                     <form action="{{ route('posts.destroy', $post) }}" method="POST"
@@ -58,8 +55,7 @@
               @endforeach
               </tbody>
             </div>
-            <div><a href="{{ route('posts.new') }}" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md"
-                style="text-decoration: none;">New
+            <div><a href="{{ route('posts.new') }}" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md no-underline">New
                 post</a>
             </div>
         </div>
