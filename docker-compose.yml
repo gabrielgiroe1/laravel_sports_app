@@ -21,7 +21,7 @@ services:
 
     #Database Server
     database:
-        image: mysql:8.1.0
+        image: postgres:8.1.0
         ports:
             - "3306:3306"
         environment:
