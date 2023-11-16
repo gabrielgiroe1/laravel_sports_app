@@ -45,16 +45,10 @@
                   </li>
                 @endif
               @else
-                <!-- Your modal button and content -->
                 <div x-data="{ open: false }" class="flex">
-                  <!-- Button to open the modal -->
                   <button @click="open = true" class=" text-blue font-semibold py-2 px-4">Filter by
                     date</button>
-
-                  <!-- Modal overlay -->
                   <div x-show="open" @click="open = false" class="fixed inset-0 bg-black opacity-50"></div>
-
-                  <!-- Modal content -->
                   <div x-show="open" class="fixed inset-0 flex items-center justify-center">
                     <div class="bg-white p-8 rounded-md">
                       <h2 class="text-2xl font-semibold mb-4">Filter by date</h2>
@@ -87,8 +81,6 @@
                     </div>
                   </div>
 
-
-
                   <div class="flex">
                     <div class="mt-3 mr-2">
                       <div><a href="{{ route('weekly_averages') }}"
@@ -100,8 +92,6 @@
                         class=" text-black font-semibold py-2 px-4 rounded-md no-underline">New post</a>
                     </div>
                   </div>
-
-
 
                   <li class="relative group">
 
