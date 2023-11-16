@@ -11,7 +11,7 @@
   <title>{{ config('app.name', 'Sports app') }}</title>
 
   <!-- Include Alpine.js from CDN -->
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
 
   <!-- Fonts -->
@@ -45,25 +45,84 @@
                   </li>
                 @endif
               @else
-                <li class="relative group">
-                  <button class="text-blue-600 group-hover:text-blue-800" @click="showMenu = !showMenu"
-                    aria-haspopup="true">
-                    {{ Auth::user()->name }}
-                  </button>
-                  <ul x-show="showMenu" @click.away="showMenu = false"
-                    class="absolute space-y-1 bg-white border border-gray-200 text-gray-700 mt-2">
-                    <li>
-                      <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                        class="block px-4 py-2 hover:bg-blue-100">{{ __('Logout') }}
-                      </a>
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
-                        @csrf
-                      </form>
-                    </li>
-                  </ul>
-                </li>
-              @endguest
+                <!-- Your modal button and content -->
+                <div x-data="{ open: false }" class="flex">
+                  <!-- Button to open the modal -->
+                  <button @click="open = true" class=" text-blue font-semibold py-2 px-4">Filter by
+                    date</button>
+
+                  <!-- Modal overlay -->
+                  <div x-show="open" @click="open = false" class="fixed inset-0 bg-black opacity-50"></div>
+
+                  <!-- Modal content -->
+                  <div x-show="open" class="fixed inset-0 flex items-center justify-center">
+                    <div class="bg-white p-8 rounded-md">
+                      <h2 class="text-2xl font-semibold mb-4">Filter by date</h2>
+                      <div class="px-6 py-4">
+                        <h2 class="text-xl font-semibold mb-4">Filter by Date</h2>
+                        <form action="{{ route('posts.index') }}" method="GET">
+                          @csrf
+                          <div class="mt-4">
+                            <label for="date" class="block font-semibold">Start Date:</label>
+                            <input type="date" name="start_date" id="start_date" class="w-full p-2 border rounded-md"
+                              value="" required />
+                          </div>
+                          <div class="mt-4">
+                            <label for="date" class="block font-semibold">End Date:</label>
+                            <input type="date" name="end_date" id="end_date" class="w-full p-2 border rounded-md"
+                              value="" required />
+                          </div>
+                          <div class="mt-4">
+                            <button type="submit"
+                              class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md">Filter
+                            </button>
+                            <a href="{{ route('posts.index') }}"
+                              class="bg-red-500 text-white font-semibold py-2 px-4 rounded-md no-underline">Clear
+                              Filter</a>
+                          </div>
+                        </form>
+                        <button @click="open = false"
+                          class="mt-4 ml-2 bg-blue-500 text-white font-semibold py-2 px-6 rounded-md">Close</button>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="flex">
+                    <div class="mt-3 mr-2">
+                      <div><a href="{{ route('weekly_averages') }}"
+                          class=" text-black font-semibold py-2 px-4 rounded-md no-underline">View
+                          Average Speed</a></div>
+                    </div>
+                    <div class="mt-3 mb-4 mr-2">
+                      <a href="{{ route('posts.new') }}"
+                        class=" text-black font-semibold py-2 px-4 rounded-md no-underline">New post</a>
+                    </div>
+                  </div>
+
+
+
+                  <li class="relative group">
+
+                    <button class="text-blue-600 group-hover:text-blue-800" @click="showMenu = !showMenu"
+                      aria-haspopup="true">
+                      {{ Auth::user()->name }}
+                    </button>
+                    <ul x-show="showMenu" @click.away="showMenu = false"
+                      class="absolute space-y-1 bg-white border border-gray-200 text-gray-700 mt-2">
+                      <li>
+                        <a href="{{ route('logout') }}"
+                          onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                          class="block px-4 py-2 hover:bg-blue-100">{{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                          @csrf
+                        </form>
+                      </li>
+                    </ul>
+                  </li>
+                @endguest
             </ul>
           </div>
 
